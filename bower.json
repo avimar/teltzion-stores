@@ -1,0 +1,23 @@
+{
+  "name": "teltzion-stores",
+  "homepage": "https://github.com/avimar/teltzion-stores",
+  "authors": [
+    "Avi Marcus <avi@bestfone.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "suncalc": "^1.7.0",
+    "riot": "^2.3.16",
+    "moment": "^2.11.2"
+  }
+}

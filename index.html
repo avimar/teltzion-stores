@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--for ie 8 both bootstrap and riotjs-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--link rel="icon" href="favicon.ico"-->
+
+	<title>TZ Store List</title>
+
+</head>
+<body>
+<!--navbar-top></navbar-top-->
+
+<main id='main'></main>
+
+	<script src="bower_components/riot/riot+compiler.min.js"></script>
+	<!--script src="tags/navbar-top.tag" type="riot/tag"></script-->
+	
+	<script src="main.tag" type="riot/tag"></script>
+	
+	<script src="data.json" type="text/javascript"></script>
+
+	<script src="bower_components/moment/min/moment.min.js"></script>
+	<script src="bower_components/suncalc/suncalc.js"></script>
+
+	<script>
+	var hours = JSON.parse(data);
+	//console.log(hours);
+
+	var auth = riot.observable();
+	//riot.mount('navbar-top');
+	
+	var currentTag = null
+	function mount (tag, options) {
+		//console.log('trying to unmount...')
+		//console.log(currentTag);
+		currentTag && currentTag.unmount(true);
+		//console.log("mounting:" + tag + " with opts:")
+		//console.log(options);
+		currentTag = riot.mount('#main', tag, options);
+		if(currentTag && currentTag[0]) currentTag=currentTag[0];
+		//if(currentTag) {console.log("mounted:"); console.log(currentTag)}
+		//else console.log("mounted but no response..?")
+		}
+
+	function router (section, action, uid, data) {
+		//http://suncalc.net/#/31.8772,35.2402,18/2016.03.02/20:46
+		//console.log("executed route callback with: " + section +' / '+ action +' / '+ uid + ' / ' + data)
+
+		if(""==section)						{section = 'main'; mount('main');}
+		else if ("auth"==section)			mount('auth',{action:action, uid:uid, data:data});
+		else console.log("404 no section found");
+
+		auth.trigger('switchPage',section);
+		auth.currentPage=section;
+		}
+
+	riot.route.stop() // clear all the old riot.route callbacks
+	riot.route(router);
+	riot.route.start(true) // start again
+
+	</script>
+
+  </body>
+</html>
