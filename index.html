@@ -21,15 +21,13 @@
 	<!--script src="tags/navbar-top.tag" type="riot/tag"></script-->
 	
 	<script src="main.tag" type="riot/tag"></script>
-	
-	<script src="data.json" type="text/javascript"></script>
 
 	<script src="bower_components/moment/min/moment.min.js"></script>
 	<script src="bower_components/suncalc/suncalc.js"></script>
 
+	<script src="data.js"></script><!--after moment is loaded-->
+
 	<script>
-	var hours = JSON.parse(data);
-	//console.log(hours);
 
 	var auth = riot.observable();
 	//riot.mount('navbar-top');
