@@ -57,7 +57,7 @@ var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday'];
 var storeList = Object.keys(storeHours);//since object, make list of stores
 storeList.forEach(function(name){//iterate list of stores, and overwrite data to normalize it.
 	storeHours[name] = storeHours[name].map(function(timeEntry){
-		timeEntry.day= daysOfWeek.indexOf(timeEntry.day.toLowerCase());//convert date to numbers in 1-7 format.
+		timeEntry.day= daysOfWeek.indexOf(timeEntry.day.toLowerCase());//convert date to numbers in 0-6 format.
 		
 		['open','close'].forEach(function(which){//dumb stuff to make it DRY
 			timeEntry[which] = normalizeTime(timeEntry[which]);//normalize
