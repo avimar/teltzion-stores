@@ -1,5 +1,5 @@
-locationX = 31.8772;
-locationY = 35.2402;//18
+var locationX = 31.8772;
+var locationY = 35.2402;//18
 
 var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
 var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
@@ -97,19 +97,6 @@ storeList.forEach(function(name){//iterate list of stores, and overwrite data to
 		});
 	})
 
-//console.log(storeHours.pharmacyMeuchedet[0]);
-
-function showTime (arr){
-	if(arr[1]<10) arr[1]='0'+arr[1];//left pad for readability
-	var zone='am';
-	if(arr[0]>12) {//show AM/PM
-		arr[0]-=12;
-		zone = 'pm';
-		}
-	else if (arr[0]==12) zone = 'pm';
-	return arr.join(':')+zone;
-	}
-
 function normalizeTime(time){
 	//console.log('about to normalize:' +typeof time + time);
 	var arr=[0,0];
@@ -120,9 +107,4 @@ function normalizeTime(time){
 	else arr = [time.substring(0,1), time.substring(1,3)];//hmm format
 	//console.log(arr);
 	return arr;
-	}
-
-function hoursToMinutes(time){
-	if(!Array.isArray(time)) time = normalizeTime(time);
-	return time[0]*60 + time[1]*1;//cast back to numbers
 	}
