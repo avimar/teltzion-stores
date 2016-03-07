@@ -1,3 +1,9 @@
+locationX = 31.8772;
+locationY = 35.2402;//18
+
+var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
+var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
+
 var storeHours = {
 	postOffice: [
 		{day: 'Sunday', open: '15:30', close: 17}
@@ -6,10 +12,6 @@ var storeHours = {
 		,{day: 'Wednesday', open: '1700', close: 18}
 		,{day: 'Thursday', open: '15:30', close: 17}
 		,{day: 'Friday', open: 11, close: 13}
-		//moment({ hour:3, minute:30, e: 1 }).twix(moment().day("Sunday").set({ hour:5}))
-		//moment.duration(1.5, "hours").afterMoment({ hour:3, minute:30})
-		//{4: {open: 17, close: 18}}
-		//,{4: {open: 15, close: 15.5}}
 		]
 	,pharmacyMeuchedet: [
 		{day: 'Sunday', open: 8, close: 14}
@@ -18,6 +20,14 @@ var storeHours = {
 		,{day: 'Wednesday', open: 8, close: 13}
 		,{day: 'Thursday', open: 13, close: 19}
 		,{day: 'Friday', open: 8, close: 11}
+		]
+	,BDStore: [
+		{day: 'Sunday', open: 16, close: 21}
+		,{day: 'Monday', open: 16, close: 21}
+		,{day: 'Tuesday', open: 16, close: 21}
+		,{day: 'Wednesday', open: 13, close: 21}
+		,{day: 'Thursday', open: 16, close: 21}
+		,{day: 'Friday', open: 9, close: 13}
 		]
 	,leumiRamatEshkol: [
 		{day: 'Monday', open: 8.5, close: 13}
@@ -29,6 +39,9 @@ var storeHours = {
 		,{day: 'Wednesday', open: 8.5, close: 14.5}
 		
 		,{day: 'Friday', open: 8.5, close: 12.5}
+		]
+	,RavFichel: [
+		{day: 'Wednesday', open: 12, close: 22}
 		]
 	,WeberBakeStore: [
 		{day: 'Thursday', open: 15.5, close: 17}
@@ -50,9 +63,23 @@ var storeHours = {
 		{day: 'Sunday', open: 19, close: 20}
 		,{day: 'Wednesday', open: 16, close: 18}
 		]
+	,KikarNetanelSweetsStand: [
+		{day: 'Sunday', open: 12, close: 23}
+		,{day: 'Monday', open: 12, close: 23}
+		,{day: 'Tuesday', open: 12, close: 23}
+		,{day: 'Wednesday', open: 12, close: 23}
+		,{day: 'Thursday', open: 12, close: 23}
+		,{day: 'Friday', open: 11, close: shabbosStart.clone().subtract(90,'minutes').format('HHmm')}
+		,{day: 'Saturday', open: shabbosEnd.clone().add(40,'minutes').format('HHmm'), close: 23.5}
+		//Friday / Erev Chag: 11am until 1½ hours before shabbos/chag
+		//Motzei Shabbos: 40minutes after Tzeits until 11:30pm.
+		]
+	,KeiliMikvaTZ: [
+		,{day: 'Friday', open: 6, close: shabbosStart.clone().format('HHmm')}
+		]
 };
 
-var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday'];
+var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
 var storeList = Object.keys(storeHours);//since object, make list of stores
 storeList.forEach(function(name){//iterate list of stores, and overwrite data to normalize it.
