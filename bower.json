@@ -18,6 +18,7 @@
   "dependencies": {
     "suncalc": "^1.7.0",
     "riot": "^2.3.16",
-    "moment": "^2.11.2"
+    "moment": "^2.11.2",
+    "vis": "^4.15.0"
   }
 }
