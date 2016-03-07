@@ -40,13 +40,15 @@ var storeHours = {
 		,{day: 'Friday', open: 10, close: 13}
 		]
 	,ChadPaamit: [
-		{day: 'Sunday', open: 17, close: 21}
-		,{day: 'Monday', open: 17, close: 21}
-		,{day: 'Tuesday', open: 17, close: 21}
-		,{day: 'Wednesday', open: 17, close: 21}
-		,{day: 'Thursday', open: 17, close: 21}
-
-		,{day: 'Friday', open: 9, close: 12}
+		{day: 'Monday', open: 17, close: 19}
+		,{day: 'Tuesday', open: 17, close: 19}
+		,{day: 'Wednesday', open: 16, close: 21}
+		,{day: 'Thursday', open: 16, close: 21}
+		,{day: 'Friday', open: 8.5, close: 13}
+		]
+	,EggsMekorBaruch1: [
+		{day: 'Sunday', open: 19, close: 20}
+		,{day: 'Wednesday', open: 16, close: 18}
 		]
 };
 
