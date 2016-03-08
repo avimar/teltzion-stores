@@ -4,6 +4,17 @@
 .vis-item .vis-item-overflow {
 	overflow: visible;
 	}
+.daytime { #via http://www.cssmatic.com/gradient-generator#'\-moz\-linear\-gradient\%28left\%2C\%20rgba\%28179\%2C220\%2C237\%2C1\%29\%200\%25\%2C\%20rgba\%2841\%2C140\%2C227\%2C1\%29\%2050\%25\%2C\%20rgba\%28188\%2C224\%2C238\%2C1\%29\%20100\%25\%29\%3B'
+	#background-color: #00BFFF;
+	background: rgba(179,220,237,1);
+	background: -moz-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,1)), color-stop(50%, rgba(41,140,227,1)), color-stop(100%, rgba(188,224,238,1)));
+	background: -webkit-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
+	background: -o-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
+	background: -ms-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
+	background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
+	}
 </style>
 
 <span class="menu" each={name,i in daysOfWeek}>
@@ -31,11 +42,18 @@ String.prototype.capitalizeFirstLetter = function() {
 	}
 
 var dataForVis = [
- //, {group: 'shabbos', content: 'Shabbos Starts: candle lighting '+shabbosStart.format('h:mma'), start: shabbosStart, type: 'point'}
- //, {group: 'shabbos', content: 'Shabbos Ends: '+shabbosEnd.format('h:mma'), start: shabbosEnd, type: 'point'}
+ {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart.format('h:mma'), start: shabbosStart, type: 'point'}
+ , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd.format('h:mma'), start: shabbosEnd, type: 'point'}
   ];
 var groups = new vis.DataSet();
-//groups.add({id: 'shabbos', content: 'Shabbos'});
+
+groups.add({id: 'Daytime', content: 'Daytime'});
+[0,1,2,3,4,5,6,7].forEach(function(day){
+	var daytime = {group: 'Daytime', content: 'Daylight', className: 'daytime'};
+	daytime.start = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunrise;
+	daytime.end = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunset;
+	dataForVis.push(daytime);
+	});
 
 storeList.forEach(function(storeName){//loop store list keys to access each store
 	groups.add({id: storeName, content: storeName.toSpaces().capitalizeFirstLetter()});//@todo: 'title' is tooltip, which can contain \n
