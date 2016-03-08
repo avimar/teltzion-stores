@@ -56,10 +56,14 @@ groups.add({id: 'Daytime', content: 'Daytime'});
 	});
 
 storeList.forEach(function(storeName){//loop store list keys to access each store
-	groups.add({id: storeName, content: storeName.toSpaces().capitalizeFirstLetter()});//@todo: 'title' is tooltip, which can contain \n
+	groups.add({
+		id: storeName
+		,content: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()
+		,title: storeData[storeName] && storeData[storeName].info || null});
+
 	storeHours[storeName].forEach(function(hoursList){//loop hours list
 		//console.log(hoursList);
-		var entry = {group: storeName, content: storeName.toSpaces().capitalizeFirstLetter()};
+		var entry = {group: storeName, content: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()};
 		entry.start = startOfWeek().day(hoursList.day).hours(hoursList.open[0]).minutes(hoursList.open[1]);
 		entry.end = startOfWeek().day(hoursList.day).hours(hoursList.close[0]).minutes(hoursList.close[1]);
 		dataForVis.push(entry);
@@ -111,6 +115,11 @@ this.on('mount', function(){
 	// Create a Timeline
 	timeline = new vis.Timeline(container, new vis.DataSet(dataForVis), options);
 	timeline.setGroups(groups);
+	timeline.on('doubleClick', function (properties) {
+		var group = properties.group;
+		if(storeData[group] && storeData[group].coords) window.open('https://maps.google.com/?q='+storeData[group].coords);
+		else if(storeData[group] && storeData[group].map) window.open('https://maps.google.com/?q='+storeData[group].map);
+		});
 	});
 
 this.seeDay = function (event){

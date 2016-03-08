@@ -4,6 +4,16 @@ var locationY = 35.2402;//18
 var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
 var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
 
+var storeData = {
+	postOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coords:'31.879362,35.239793'}
+	,pharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coords:'31.880311,35.239828'}
+	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', map: 'Ahavat Yisroel 18, Kokchav Yaakov, Israel'}
+	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', map:'Ahavat Yisroel 14, Kokchav Yaakov, Israel'}
+	,eggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', map:'Mekor Baruch 1, Kokchav Yaakov, Israel'}
+	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', map:'Ahavat Yisroel 5, Kokchav Yaakov, Israel'}
+	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 3pm, by appointment.', map:'Kehilat Yaakov 9, Kokchav Yaakov, Israel'}
+	};
+
 var storeHours = {
 	postOffice: [
 		{day: 'Sunday', open: '15:30', close: 17}
@@ -59,7 +69,7 @@ var storeHours = {
 		,{day: 'Thursday', open: 16, close: 21}
 		,{day: 'Friday', open: 8.5, close: 13}
 		]
-	,EggsMekorBaruch1: [
+	,eggsMB1: [
 		{day: 'Sunday', open: 19, close: 20}
 		,{day: 'Wednesday', open: 16, close: 18}
 		]
@@ -82,10 +92,10 @@ var storeHours = {
 var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
 var storeList = Object.keys(storeHours);//since object, make list of stores
+
 storeList.forEach(function(name){//iterate list of stores, and overwrite data to normalize it.
 	storeHours[name] = storeHours[name].map(function(timeEntry){
 		timeEntry.day= daysOfWeek.indexOf(timeEntry.day.toLowerCase());//convert date to numbers in 0-6 format.
-		
 		['open','close'].forEach(function(which){//dumb stuff to make it DRY
 			timeEntry[which] = normalizeTime(timeEntry[which]);//normalize
 			//console.log('just normalized: '+typeof timeEntry[which] + timeEntry[which])
