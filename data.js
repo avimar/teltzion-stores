@@ -5,13 +5,15 @@ var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), loca
 var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
 
 var storeData = {
-	postOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coords:'31.879362,35.239793'}
-	,pharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coords:'31.880311,35.239828'}
-	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', map: 'Ahavat Yisroel 18, Kokchav Yaakov, Israel'}
-	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', map:'Ahavat Yisroel 14, Kokchav Yaakov, Israel'}
-	,eggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', map:'Mekor Baruch 1, Kokchav Yaakov, Israel'}
-	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', map:'Ahavat Yisroel 5, Kokchav Yaakov, Israel'}
-	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 3pm, by appointment.', map:'Kehilat Yaakov 9, Kokchav Yaakov, Israel'}
+	postOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
+	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Corner of Mekor Baruch and Ahavas Yisroel Parking Lot', coordX:31.879413, coordY: 35.239728}
+	,pharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
+	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
+	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', coordX:31.878945, coordY: 35.239718}
+	,eggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', coordX:31.878198, coordY: 35.240136}
+	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', coordX:31.879281, coordY: 35.240036}
+	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 3pm, by appointment.', coordX:31.881570, coordY: 35.239375}
+	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	};
 
 var storeHours = {

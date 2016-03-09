@@ -117,8 +117,8 @@ this.on('mount', function(){
 	timeline.setGroups(groups);
 	timeline.on('doubleClick', function (properties) {
 		var group = properties.group;
-		if(storeData[group] && storeData[group].coords) window.open('https://maps.google.com/?q='+storeData[group].coords);
-		else if(storeData[group] && storeData[group].map) window.open('https://maps.google.com/?q='+storeData[group].map);
+		//if(storeData[group] && storeData[group].coordX) window.open('https://maps.google.com/?q='+storeData[group].coordX+','+storeData[group].coordY);
+		//else if(storeData[group] && storeData[group].map) window.open('https://maps.google.com/?q='+storeData[group].map);
 		});
 	});
 
