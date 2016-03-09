@@ -10,12 +10,22 @@
 	<!--link rel="icon" href="favicon.ico"-->
 
 	<title>TZ Store List</title>
-
+	<style>
+	html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+	height: 30%;
+	}
+	</style>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.15.0/vis.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--navbar-top></navbar-top-->
 
+<div id="map"></div>
 <main id='main'></main>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.16/riot+compiler.min.js"></script>
@@ -62,8 +72,9 @@
 	riot.route.stop() // clear all the old riot.route callbacks
 	riot.route(router);
 	riot.route.start(true) // start again
-
 	</script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP4Qy6nKQwdg8uPO-uaBpV_mx3ynMU264"></script>
 
   </body>
 </html>

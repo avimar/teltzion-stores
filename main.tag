@@ -17,6 +17,7 @@
 	}
 </style>
 
+<br>
 <span class="menu" each={name,i in daysOfWeek}>
 	<input class="menu" type="button" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
 	</span>
@@ -25,8 +26,22 @@
 
 <div id="visualization"></div>
 
+
 <script>
+var map;
 var timeline;
+var lastOpenInfoWindow = false;
+
+function openInfoWindow(infoWindow,marker){
+	if(lastOpenInfoWindow) lastOpenInfoWindow.close();
+	lastOpenInfoWindow = infoWindow;
+	marker.setAnimation(google.maps.Animation.BOUNCE);
+	infoWindow.open(map,marker);
+	window.setTimeout(function(){
+		marker.setAnimation(null);
+		},300);
+	}
+
 var startOfWeek = function(){
 	return moment().startOf('week');
 	}
@@ -110,13 +125,43 @@ var options = {
 	};
 
 this.on('mount', function(){
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: 31.880645, lng: 35.241750}
+		,zoom: 17
+		,streetViewControl: false
+		});
+	storeList.forEach(function(storeName){//loop store list keys to access each store, but once the map is loaded
+		if(storeData[storeName] && storeData[storeName].coordX && storeData[storeName].coordY){
+			var marker = {
+				position : {lat:storeData[storeName].coordX, lng: storeData[storeName].coordY}
+				,map: map
+				,title: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()
+				};
+			marker = new google.maps.Marker(marker);
+			storeData[storeName].marker = marker;
+			if(storeData[storeName].info){
+				var infowindow = new google.maps.InfoWindow({
+					content: "<b>"+(storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter())+"</b><br>"+storeData[storeName].info
+					});
+				storeData[storeName].infowindow = infowindow;
+				marker.addListener('click', function() {
+					openInfoWindow(infowindow,marker);
+					});
+				}
+			}//meta data exists
+		});//loop stores
+
 	// DOM element where the Timeline will be attached
 	var container = document.getElementById('visualization');
 	// Create a Timeline
 	timeline = new vis.Timeline(container, new vis.DataSet(dataForVis), options);
 	timeline.setGroups(groups);
-	timeline.on('doubleClick', function (properties) {
+	timeline.on('click', function (properties) {
 		var group = properties.group;
+		if(storeData[group] && storeData[group].marker && storeData[group].infowindow){
+			openInfoWindow(storeData[group].infowindow, storeData[group].marker);
+			//map.setCenter({lat: storeData[group].coordX, lng: storeData[group].coordY});
+			}
 		//if(storeData[group] && storeData[group].coordX) window.open('https://maps.google.com/?q='+storeData[group].coordX+','+storeData[group].coordY);
 		//else if(storeData[group] && storeData[group].map) window.open('https://maps.google.com/?q='+storeData[group].map);
 		});
