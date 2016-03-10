@@ -22,6 +22,7 @@ var storeData = {
 		coordX:31.880218, coordY: 35.244833}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	,MakoletKY: {name: 'Makolet KY', info: 'Phone 1-700-550-550', coordX:31.881013, coordY: 35.245131}
+	,LeumiRamatEshkol: {name: 'Leumi Bank (Ramat Eshkol)', info: 'Ramat Eshkol', coordX:31.800846, coordY: 35.226847}
 	};
 
 var storeHours = {
