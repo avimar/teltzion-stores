@@ -15,6 +15,9 @@
 	background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
 	}
+.nighttime {
+	background-color: #708090;
+	}
 </style>
 
 <br>
@@ -31,6 +34,13 @@
 var map;
 var timeline;
 var lastOpenInfoWindow = false;
+
+String.prototype.capitalizeFirstLetter = function() {
+	return this.charAt(0).toUpperCase() + this.slice(1);
+	}
+String.prototype.nl2br = function() {
+	return this.replace(/(\n)/g, '<br>');
+	}
 
 function openInfoWindow(infoWindow,marker){
 	if(lastOpenInfoWindow) lastOpenInfoWindow.close();
@@ -49,9 +59,6 @@ var endOfWeek = function(){
 	return moment().endOf('week');
 	}
 
-String.prototype.toSpaces = function(){//@TODO ugly: clean up need for this stuff
-	return this.replace(/([A-Z])/g, function($1){return " "+$1;});
-	};
 var dataForVis = [
  {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart.format('h:mma'), start: shabbosStart, type: 'point'}
  , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd.format('h:mma'), start: shabbosEnd, type: 'point'}
@@ -137,7 +144,7 @@ this.on('mount', function(){
 			storeData[storeName].marker = marker;
 			if(storeData[storeName].info){
 				var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
-				if(storeData[storeName].info) content+=storeData[storeName].info+"<br>";
+				if(storeData[storeName].info) content+=storeData[storeName].info.nl2br()+"<br>";
 				storeHours[storeName].forEach(function(hoursList){//loop hours list
 					content+="<br><u>" + daysOfWeekHuman[hoursList.day]+":</u> ";
 					content+=hoursList.openHuman;
