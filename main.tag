@@ -85,6 +85,7 @@ storeList.forEach(function(storeName){//loop store list keys to access each stor
 	storeHours[storeName].forEach(function(hoursList){//loop hours list
 		//console.log(hoursList);
 		var entry = {group: storeName, content: storeData[storeName] && storeData[storeName].name || storeName};
+		entry.id=storeName+Math.random();
 		entry.start = startOfWeek().day(hoursList.day).hours(hoursList.open[0]).minutes(hoursList.open[1]);
 		entry.end = startOfWeek().day(hoursList.day).hours(hoursList.close[0]).minutes(hoursList.close[1]);
 		dataForVis.push(entry);
@@ -106,6 +107,7 @@ var options = {
 	,moveable: false
 	,selectable: false
 	,orientation: 'both'
+	,margin: { item: 0, axis: 0 }
 	,format: {
 		minorLabels: {
 			millisecond:'SSS',
@@ -171,10 +173,10 @@ this.on('mount', function(){
 	// DOM element where the Timeline will be attached
 	var container = document.getElementById('visualization');
 	// Create a Timeline
-	timeline = new vis.Timeline(container, new vis.DataSet(dataForVis), options);
-	timeline.setGroups(groups);
+	timeline = new vis.Timeline(container, new vis.DataSet(dataForVis), groups, options);
 	timeline.on('click', function (properties) {
 		var group = properties.group;
+		//var group = properties.item.split('0.')[0];
 		if(storeData[group] && storeData[group].marker && storeData[group].infowindow){
 			openInfoWindow(storeData[group].infowindow, storeData[group].marker);
 			//map.setCenter({lat: storeData[group].coordX, lng: storeData[group].coordY});
