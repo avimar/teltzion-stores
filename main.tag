@@ -52,10 +52,6 @@ var endOfWeek = function(){
 String.prototype.toSpaces = function(){//@TODO ugly: clean up need for this stuff
 	return this.replace(/([A-Z])/g, function($1){return " "+$1;});
 	};
-String.prototype.capitalizeFirstLetter = function() {
-	return this.charAt(0).toUpperCase() + this.slice(1);
-	}
-
 var dataForVis = [
  {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart.format('h:mma'), start: shabbosStart, type: 'point'}
  , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd.format('h:mma'), start: shabbosEnd, type: 'point'}
@@ -73,12 +69,12 @@ groups.add({id: 'Daytime', content: 'Daytime'});
 storeList.forEach(function(storeName){//loop store list keys to access each store
 	groups.add({
 		id: storeName
-		,content: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()
+		,content: storeData[storeName] && storeData[storeName].name || storeName
 		,title: storeData[storeName] && storeData[storeName].info || null});
 
 	storeHours[storeName].forEach(function(hoursList){//loop hours list
 		//console.log(hoursList);
-		var entry = {group: storeName, content: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()};
+		var entry = {group: storeName, content: storeData[storeName] && storeData[storeName].name || storeName};
 		entry.start = startOfWeek().day(hoursList.day).hours(hoursList.open[0]).minutes(hoursList.open[1]);
 		entry.end = startOfWeek().day(hoursList.day).hours(hoursList.close[0]).minutes(hoursList.close[1]);
 		dataForVis.push(entry);
@@ -135,7 +131,7 @@ this.on('mount', function(){
 			var marker = {
 				position : {lat:storeData[storeName].coordX, lng: storeData[storeName].coordY}
 				,map: map
-				,title: storeData[storeName] && storeData[storeName].name || storeName.toSpaces().capitalizeFirstLetter()
+				,title: storeData[storeName].name || storeName
 				};
 			marker = new google.maps.Marker(marker);
 			storeData[storeName].marker = marker;
