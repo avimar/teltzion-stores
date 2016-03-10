@@ -142,25 +142,26 @@ this.on('mount', function(){
 				};
 			marker = new google.maps.Marker(marker);
 			storeData[storeName].marker = marker;
-			if(storeData[storeName].info){
-				var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
-				if(storeData[storeName].info) content+=storeData[storeName].info.nl2br()+"<br>";
-				storeHours[storeName].forEach(function(hoursList){//loop hours list
-					content+="<br><u>" + daysOfWeekHuman[hoursList.day]+":</u> ";
-					content+=hoursList.openHuman;
-					if(hoursList.openText)content+=" ("+hoursList.openText+") ";
-					content+="-"+hoursList.closeHuman;
-					if(hoursList.closeText)content+=" ("+hoursList.closeText+")";
-					})
 
-				var infowindow = new google.maps.InfoWindow({
-					content: content
-					});
-				storeData[storeName].infowindow = infowindow;
-				marker.addListener('click', function() {
-					openInfoWindow(infowindow,marker);
-					});
-				}
+			//Info window
+			var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
+			if(storeData[storeName].info) content+=storeData[storeName].info.nl2br()+"<br>";
+			storeHours[storeName].forEach(function(hoursList){//loop hours list
+				content+="<br><u>" + daysOfWeekHuman[hoursList.day]+":</u> ";
+				content+=hoursList.openHuman;
+				if(hoursList.openText)content+=" ("+hoursList.openText+") ";
+				content+="-"+hoursList.closeHuman;
+				if(hoursList.closeText)content+=" ("+hoursList.closeText+")";
+				})
+
+			var infowindow = new google.maps.InfoWindow({
+				content: content
+				});
+			storeData[storeName].infowindow = infowindow;
+			marker.addListener('click', function() {
+				openInfoWindow(infowindow,marker);
+				});
+
 			}//meta data exists
 		});//loop stores
 
