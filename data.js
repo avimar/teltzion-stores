@@ -12,7 +12,10 @@ var storeData = {
 	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', coordX:31.878945, coordY: 35.239718}
 	,EggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', coordX:31.878198, coordY: 35.240136}
 	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', coordX:31.879281, coordY: 35.240036}
-	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 3pm, by appointment.', coordX:31.881570, coordY: 35.239375}
+	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 4pm, by appointment.', coordX:31.881570, coordY: 35.239375}
+	,MikvaTZ: {name: 'Mikva TZ',
+		info: 'Kehilat Yaakov 9\nOnly times for normal days listed, on winter clock.\nYom Tov night: Tzeits. Motzei Yom Tov follow shabbos schedule.\nDifferent hours on: Motzei 17 Tammuz, 9 Av, Chol Hamoed, Purim. \nFor later, call 997-3441',
+		coordX:31.881508, coordY: 35.239266}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	};
 
@@ -86,6 +89,17 @@ var storeHours = {
 		]
 	,KeiliMikvaTZ: [
 		,{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart.clone().format('HHmm')}
+		]
+	,MikvaTZ: [
+		{day: 'Sunday', open: 18.5, close: 21}
+		,{day: 'Monday', open: 18.5, close: 21}
+		,{day: 'Tuesday', open: 18.5, close: 21}
+		,{day: 'Wednesday', open: 18.5, close: 21}
+		,{day: 'Thursday', open: 18.5, close: 21}
+		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart.clone().add(40,'minutes').format('HHmm'),
+						close: shabbosEnd.clone().add(10,'minutes').format('HHmm')	}
+		,{day: 'Saturday', openText: '1½ after Shabbos', open: shabbosEnd.clone().add(90,'minutes').format('HHmm'),
+						closeText: 'for 2 hours', close: shabbosEnd.clone().add(90+120,'minutes').format('HHmm') }
 		]
 };
 
