@@ -24,7 +24,10 @@
 <span class="menu" each={name,i in daysOfWeek}>
 	<input class="menu" type="button" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
 	</span>
--- <input class="menu" type="button" value="Entire Week" onclick={seeWeek}/>&nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
+-- <input class="menu" type="button" value="Entire Week" onclick={seeWeek}/>
+&nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
+&nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">Other TZ</a>
+&nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">Other KY</a>
 <br><br>
 
 <div id="visualization"></div>
