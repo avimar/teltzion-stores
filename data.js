@@ -121,12 +121,10 @@ function normalizeTime(time){
 
 function showTime (arr){
 	var time=arr.slice(0);//clone it, don't overwrite.
+	if (time[0]==12 && time[1]==0) return 'noon';
 	if(typeof time[1]==='number' && time[1]<10) time[1]='0'+time[1];//left pad for readability
-	var zone='am';
-	if(time[0]>12) {//show AM/PM
-		time[0]-=12;
-		zone = 'pm';
-		}
-	else if (time[0]==12) zone = 'pm';
+	var zone='pm';
+	if(time[0]>12) time[0]-=12;
+	else zone = 'am';
 	return time.join(':')+zone;
 	}
