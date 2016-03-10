@@ -5,19 +5,19 @@ var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), loca
 var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
 
 var storeData = {
-	postOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
+	PostOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
 	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Corner of Mekor Baruch and Ahavas Yisroel Parking Lot', coordX:31.879413, coordY: 35.239728}
-	,pharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
+	,PharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
 	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
 	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', coordX:31.878945, coordY: 35.239718}
-	,eggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', coordX:31.878198, coordY: 35.240136}
+	,EggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', coordX:31.878198, coordY: 35.240136}
 	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', coordX:31.879281, coordY: 35.240036}
 	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 3pm, by appointment.', coordX:31.881570, coordY: 35.239375}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	};
 
 var storeHours = {
-	postOffice: [
+	PostOffice: [
 		{day: 'Sunday', open: '15:30', close: 17}
 		,{day: 'Monday', open: '8:30', close: 10}
 		,{day: 'Tuesday', open: '15:30', close: 17}
@@ -25,7 +25,7 @@ var storeHours = {
 		,{day: 'Thursday', open: '15:30', close: 17}
 		,{day: 'Friday', open: 11, close: 13}
 		]
-	,pharmacyMeuchedet: [
+	,PharmacyMeuchedet: [
 		{day: 'Sunday', open: 8, close: 14}
 		,{day: 'Monday', open: 14, close: 19}
 		,{day: 'Tuesday', open: 8, close: 15}
@@ -41,7 +41,7 @@ var storeHours = {
 		,{day: 'Thursday', open: 16, close: 21}
 		,{day: 'Friday', open: 9, close: 13}
 		]
-	,leumiRamatEshkol: [
+	,LeumiRamatEshkol: [
 		{day: 'Monday', open: 8.5, close: 13}
 		,{day: 'Thursday', open: 8.5, close: 13}
 		,{day: 'Monday', open: 16, close: '18:15'}
@@ -71,7 +71,7 @@ var storeHours = {
 		,{day: 'Thursday', open: 16, close: 21}
 		,{day: 'Friday', open: 8.5, close: 13}
 		]
-	,eggsMB1: [
+	,EggsMB1: [
 		{day: 'Sunday', open: 19, close: 20}
 		,{day: 'Wednesday', open: 16, close: 18}
 		]
