@@ -81,17 +81,16 @@ var storeHours = {
 		,{day: 'Tuesday', open: 12, close: 23}
 		,{day: 'Wednesday', open: 12, close: 23}
 		,{day: 'Thursday', open: 12, close: 23}
-		,{day: 'Friday', open: 11, close: shabbosStart.clone().subtract(90,'minutes').format('HHmm')}
-		,{day: 'Saturday', open: shabbosEnd.clone().add(40,'minutes').format('HHmm'), close: 23.5}
-		//Friday / Erev Chag: 11am until 1½ hours before shabbos/chag
-		//Motzei Shabbos: 40minutes after Tzeits until 11:30pm.
+		,{day: 'Friday', open: 11, closeText: '1½ hours before Shabbos', close: shabbosStart.clone().subtract(90,'minutes').format('HHmm')}
+		,{day: 'Saturday', openText: '40minutes after Tzeits', open: shabbosEnd.clone().add(40,'minutes').format('HHmm'), close: 23.5}
 		]
 	,KeiliMikvaTZ: [
-		,{day: 'Friday', open: 6, close: shabbosStart.clone().format('HHmm')}
+		,{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart.clone().format('HHmm')}
 		]
 };
 
 var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+var daysOfWeekHuman = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 var storeList = Object.keys(storeHours);//since object, make list of stores
 
@@ -102,7 +101,7 @@ storeList.forEach(function(name){//iterate list of stores, and overwrite data to
 			timeEntry[which] = normalizeTime(timeEntry[which]);//normalize
 			//console.log('just normalized: '+typeof timeEntry[which] + timeEntry[which])
 			//timeEntry[which+'Minutes'] = hoursToMinutes(timeEntry[which]);//then create calc minutes
-			//timeEntry[which+'Human'] = showTime(timeEntry[which]);//and also human readable time //@TODO: overwrite original array?!
+			timeEntry[which+'Human'] = showTime(timeEntry[which]);//and also human readable time
 			});
 		
 		return timeEntry;
@@ -119,4 +118,16 @@ function normalizeTime(time){
 	else arr = [time.substring(0,1), time.substring(1,3)];//hmm format
 	//console.log(arr);
 	return arr;
+	}
+
+function showTime (arr){
+	var time=arr.slice(0);//clone it, don't overwrite.
+	if(typeof time[1]==='number' && time[1]<10) time[1]='0'+time[1];//left pad for readability
+	var zone='am';
+	if(time[0]>12) {//show AM/PM
+		time[0]-=12;
+		zone = 'pm';
+		}
+	else if (time[0]==12) zone = 'pm';
+	return time.join(':')+zone;
 	}
