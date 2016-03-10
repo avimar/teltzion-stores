@@ -18,25 +18,32 @@
 .nighttime {
 	background-color: #708090;
 	}
+#mapToggleButton a{width:120px;background:#000;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;font-size:1rem;line-height:1.5rem;position:absolute;}
+#mapToggleButton {position:fixed;display:block;top:0;right:0;width:120px;overflow:hidden;height:200px;z-index:9999;}
 </style>
 
+<span id="mapToggleButton"><a onclick={mapToggle}>Toggle Map</a></span><!--https://developers.google.com/maps/documentation/javascript/examples/control-custom-->
+<span id="dayButtons" hide={onlyMap}>
 <br>
-<span class="menu" each={name,i in daysOfWeek}>
-	<input class="menu" type="button" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
+<span each={name,i in daysOfWeek}>
+	<input type="button" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
 	</span>
 -- <input class="menu" type="button" value="Entire Week" onclick={seeWeek}/>
 &nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">Other TZ</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">Other KY</a>
-<br><br>
+<br><br></span>
 
-<div id="visualization"></div>
+<div id="visualization" hide={onlyMap}></div>
 
 
 <script>
 var map;
 var timeline;
 var lastOpenInfoWindow = false;
+var divVis;
+var divMap;
+this.onlyMap=false;
 
 String.prototype.capitalizeFirstLetter = function() {
 	return this.charAt(0).toUpperCase() + this.slice(1);
@@ -133,7 +140,10 @@ var options = {
 	};
 
 this.on('mount', function(){
-	map = new google.maps.Map(document.getElementById('map'), {
+	divVis= document.getElementById('visualization');
+	divMap= document.getElementById('map');
+
+	map = new google.maps.Map(divMap, {
 		center: {lat: 31.880645, lng: 35.241750}
 		,zoom: 17
 		,streetViewControl: false
@@ -170,10 +180,8 @@ this.on('mount', function(){
 			}//meta data exists
 		});//loop stores
 
-	// DOM element where the Timeline will be attached
-	var container = document.getElementById('visualization');
 	// Create a Timeline
-	timeline = new vis.Timeline(container, new vis.DataSet(dataForVis), groups, options);
+	timeline = new vis.Timeline(divVis, new vis.DataSet(dataForVis), groups, options);
 	timeline.on('click', function (properties) {
 		var group = properties.group;
 		//var group = properties.item.split('0.')[0];
@@ -206,6 +214,18 @@ this.seeWeek = function (event){
 this.isToday=function(day){
 	if(moment().format('e')==day) return ' (Today)';
 	else return '';
+	}
+
+this.mapToggle=function(){
+	this.onlyMap = !this.onlyMap;
+	if(this.onlyMap) {
+		divMap.style.height = "100%";
+		google.maps.event.trigger(divMap,'resize');
+		}
+	else{
+		divMap.style.height = "30%";
+		google.maps.event.trigger(divMap,'resize');
+		}
 	}
 
 </script>
