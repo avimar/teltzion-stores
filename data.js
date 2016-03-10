@@ -100,7 +100,6 @@ storeList.forEach(function(name){//iterate list of stores, and overwrite data to
 		['open','close'].forEach(function(which){//dumb stuff to make it DRY
 			timeEntry[which] = normalizeTime(timeEntry[which]);//normalize
 			//console.log('just normalized: '+typeof timeEntry[which] + timeEntry[which])
-			//timeEntry[which+'Minutes'] = hoursToMinutes(timeEntry[which]);//then create calc minutes
 			timeEntry[which+'Human'] = showTime(timeEntry[which]);//and also human readable time
 			});
 		
