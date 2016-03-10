@@ -6,6 +6,7 @@ var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locati
 
 var storeData = {
 	PostOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
+	,PostOfficeKY: {name: 'KY Doar', info: '', coordX:31.881202, coordY: 35.245059}
 	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Corner of Mekor Baruch and Ahavas Yisroel Parking Lot', coordX:31.879413, coordY: 35.239728}
 	,PharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
 	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
@@ -16,7 +17,11 @@ var storeData = {
 	,MikvaTZ: {name: 'Women Mikva TZ',
 		info: 'Kehilat Yaakov 9\nOnly times for normal days listed, on winter clock. Weekday winter: 6:30pm-9pm. Summer: 7:30pm-9:30pm\nYom Tov night: Tzeits. Motzei Yom Tov follow shabbos schedule.\nDifferent hours on: Motzei 17 Tammuz, 9 Av, Chol Hamoed, Purim. \nFor later, call 997-3441',
 		coordX:31.881508, coordY: 35.239266}
+	,MikvaKY: {name: 'Women Mikva KY',
+		info: 'Mekor Chaaim, cost: 30shekel\nOnly times for normal days listed, on winter clock. Weekday winter: 7:30pm-8:30pm. Summer: ? Motzei Shabbos ?\nUse other times: Odelia Badi 052-720-3360 or Devora Mizrachi 050-414-5489 for 20 shekel more.',
+		coordX:31.880218, coordY: 35.244833}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
+	,MakoletKY: {name: 'Makolet KY', info: 'Phone 1-700-550-550', coordX:31.881013, coordY: 35.245131}
 	};
 
 var storeHours = {
@@ -27,6 +32,11 @@ var storeHours = {
 		,{day: 'Wednesday', open: '1700', close: 18}
 		,{day: 'Thursday', open: '15:30', close: 17}
 		,{day: 'Friday', open: 11, close: 13}
+		]
+	,PostOfficeKY: [
+		{day: 'Monday', open: 16, close: 17}
+		,{day: 'Thursday', open: 20, close: 21}
+		,{day: 'Friday', open: 9, close: 10}
 		]
 	,PharmacyMeuchedet: [
 		{day: 'Sunday', open: 8, close: 14}
@@ -100,6 +110,23 @@ var storeHours = {
 						close: shabbosEnd.clone().add(10,'minutes').format('HHmm')	}
 		,{day: 'Saturday', openText: '1½ after Shabbos', open: shabbosEnd.clone().add(90,'minutes').format('HHmm'),
 						closeText: 'for 2 hours, get there first hour', close: shabbosEnd.clone().add(90+120,'minutes').format('HHmm') }
+		]
+	,MikvaKY: [
+		{day: 'Sunday', open: 18.5, close: 20.5}
+		,{day: 'Monday', open: 18.5, close: 20.5}
+		,{day: 'Tuesday', open: 18.5, close: 20.5}
+		,{day: 'Wednesday', open: 18.5, close: 20.5}
+		,{day: 'Thursday', open: 18.5, close: 20.5}
+		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart.clone().add(40,'minutes').format('HHmm'),
+						close: shabbosEnd.clone().add(10,'minutes').format('HHmm')	}
+		]
+	,MakoletKY: [
+		{day: 'Sunday', open: 7, close: 21}
+		,{day: 'Monday', open: 7, close: 21}
+		,{day: 'Tuesday', open: 7, close: 21}
+		,{day: 'Wednesday', open: 7, close: 22}
+		,{day: 'Thursday', open: 7, close: 22}
+		,{day: 'Friday', open: 7, closeText: '2 before Shabbos', close: shabbosStart.clone().subtract(2,'hours').format('HHmm')}
 		]
 };
 
