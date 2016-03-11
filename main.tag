@@ -30,8 +30,9 @@
 	</span>
 -- <input class="menu" type="button" value="Entire Week" onclick={seeWeek}/>
 &nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
-&nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">Other TZ</a>
-&nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">Other KY</a>
+&nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">TZ Info</a>
+&nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">KY Info</a>
+&nbsp;&nbsp;<a href="http://www.pkk.bycomputers.com/" target="_blank">Traffic</a>
 <br><br></span>
 
 <div id="visualization" hide={onlyMap}></div>
