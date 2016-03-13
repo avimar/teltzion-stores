@@ -149,6 +149,9 @@ this.on('mount', function(){
 		,zoom: 17
 		,streetViewControl: false
 		});
+	map.addListener('click', function() {//on click, clear open info windows
+		if(lastOpenInfoWindow) lastOpenInfoWindow.close();
+		});
 	storeList.forEach(function(storeName){//loop store list keys to access each store, but once the map is loaded
 		if(storeData[storeName] && storeData[storeName].coordX && storeData[storeName].coordY){
 			var marker = {
