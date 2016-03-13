@@ -99,7 +99,7 @@ var storeHours = {
 		,{day: 'Saturday', openText: '40minutes after Tzeits', open: shabbosEnd.clone().add(40,'minutes').format('HHmm'), close: 23.5}
 		]
 	,KeiliMikvaTZ: [
-		,{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart.clone().format('HHmm')}
+		{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart.clone().format('HHmm')}
 		]
 	,MikvaTZ: [
 		{day: 'Sunday', open: 18.5, close: 21}
@@ -155,7 +155,7 @@ function normalizeTime(time){
 	if(typeof time === 'number' && Number.isInteger(time)) arr[0]=time;//if ints, just *60 to get minutes.
 	else if(typeof time === 'number') arr= [Math.floor(time), time%1*60];//e.g. open at 8.5 = 8:30
 	else if(time.indexOf(':')!==-1) arr = time.split(':');//hh:mm format
-	else if(time.length==4) arr = [time.substring(0,2), time.substring(2,4)];//hhmm format
+	else if(time.length===4) arr = [time.substring(0,2), time.substring(2,4)];//hhmm format
 	else arr = [time.substring(0,1), time.substring(1,3)];//hmm format
 	//console.log(arr);
 	return arr;
@@ -163,7 +163,7 @@ function normalizeTime(time){
 
 function showTime (arr){
 	var time=arr.slice(0);//clone it, don't overwrite.
-	if (time[0]==12 && time[1]==0) return 'noon';
+	if (time[0]==12 && time[1]==0) return 'noon';// I did NOT cast it to numbers, so can't use ===
 	if(typeof time[1]==='number' && time[1]<10) time[1]='0'+time[1];//left pad for readability
 	var zone='pm';
 	if(time[0]>12) time[0]-=12;
