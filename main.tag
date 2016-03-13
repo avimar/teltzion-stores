@@ -78,9 +78,11 @@ var groups = new vis.DataSet();
 
 groups.add({id: 'Daytime', content: 'Daytime'});
 [0,1,2,3,4,5,6].forEach(function(day){
-	var daytime = {group: 'Daytime', content: 'Daylight', className: 'daytime'};
-	daytime.start = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunrise;
-	daytime.end = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunset;
+	var zmanim=SunCalc.getTimes(startOfWeek().day(day), locationX, locationY);
+	var daytime = {group: 'Daytime', className: 'daytime'};
+	daytime.content = 'Daylight (neitz '+moment(zmanim.sunrise).format('h:mma') + ', earliest mincha: '+moment(zmanim.solarNoon).add(30,'minute').format('h:mma')+')';
+	daytime.start = zmanim.sunrise;
+	daytime.end = zmanim.sunset;
 	dataForVis.push(daytime);
 	});
 
