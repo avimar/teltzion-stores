@@ -77,7 +77,7 @@ var dataForVis = [
 var groups = new vis.DataSet();
 
 groups.add({id: 'Daytime', content: 'Daytime'});
-[0,1,2,3,4,5,6,7].forEach(function(day){
+[0,1,2,3,4,5,6].forEach(function(day){
 	var daytime = {group: 'Daytime', content: 'Daylight', className: 'daytime'};
 	daytime.start = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunrise;
 	daytime.end = SunCalc.getTimes(startOfWeek().day(day), locationX, locationY).sunset;
