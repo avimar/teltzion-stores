@@ -15,6 +15,15 @@
 	background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,140,227,1) 50%, rgba(188,224,238,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
 	}
+.daySelected { background-color: #008CBA !important; color: white !important; } /* Blue */
+.buttons {
+	border-radius: 3px;
+	border: none;
+	padding: 8px 8px;
+	background-color: #e7e7e7;
+	display: inline-block;
+	color: black;
+	}
 .nighttime {
 	background-color: #708090;
 	}
@@ -26,9 +35,9 @@
 <span id="dayButtons" hide={onlyMap}>
 <br>
 <span each={name,i in daysOfWeek}>
-	<input type="button" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
+	<input type="button" class="buttons {daySelected: (showDay==i)}" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
 	</span>
--- <input class="menu" type="button" value="Entire Week" onclick={seeWeek}/>
+-- <input type="button" class="buttons {daySelected: (showDay==i)}" value="Entire Week" onclick={seeWeek}/>
 &nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">TZ Info</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">KY Info</a>
@@ -39,11 +48,13 @@
 
 
 <script>
+var self=this;
 var map;
 var timeline;
 var lastOpenInfoWindow = false;
 var divVis;
 var divMap;
+this.showDay = moment().format('e');
 this.onlyMap=false;
 
 String.prototype.capitalizeFirstLetter = function() {
@@ -120,6 +131,7 @@ var options = {
 	,orientation: 'both'
 	,margin: { item: 0, axis: 0 }
 	,groupOrder: 'id'
+	,showMajorLabels: false
 	,format: {
 		minorLabels: {
 			millisecond:'SSS',
@@ -209,6 +221,7 @@ this.seeDay = function (event){
 		,end:  startOfWeek().day(seeDay).endOf('day')
 		,animation: false
 		});
+	self.showDay = seeDay;
 	}
 
 this.seeWeek = function (event){
@@ -217,6 +230,7 @@ this.seeWeek = function (event){
 		,end:  endOfWeek()
 		,animation: false
 		});
+	self.showDay = 7;
 	}
 
 this.isToday=function(day){
