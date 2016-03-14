@@ -71,15 +71,15 @@ var endOfWeek = function(){
 	}
 
 var dataForVis = [
- {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart().format('h:mma'), start: shabbosStart(), type: 'point'}
- , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd().format('h:mma'), start: shabbosEnd(), type: 'point'}
+ {group: '0daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart().format('h:mma'), start: shabbosStart(), type: 'point'}
+ , {group: '0daytime', content: 'Shabbos Ends: '+shabbosEnd().format('h:mma'), start: shabbosEnd(), type: 'point'}
   ];
 var groups = new vis.DataSet();
 
-groups.add({id: 'Daytime', content: 'Daytime'});
+groups.add({id: '0daytime', content: 'Daytime'});
 [0,1,2,3,4,5,6].forEach(function(day){
 	var zmanim=SunCalc.getTimes(startOfWeek().day(day), locationX, locationY);
-	var daytime = {group: 'Daytime', className: 'daytime'};
+	var daytime = {group: '0daytime', className: 'daytime'};
 	daytime.content = 'Daylight (neitz '+moment(zmanim.sunrise).format('h:mma') + ', earliest mincha: '+moment(zmanim.solarNoon).add(30,'minute').format('h:mma')+')';
 	daytime.start = zmanim.sunrise;
 	daytime.end = zmanim.sunset;
@@ -119,6 +119,7 @@ var options = {
 	,selectable: false
 	,orientation: 'both'
 	,margin: { item: 0, axis: 0 }
+	,groupOrder: 'id'
 	,format: {
 		minorLabels: {
 			millisecond:'SSS',
