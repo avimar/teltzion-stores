@@ -29,7 +29,8 @@ var storeData = {
 	,RamiLevyBinyamin: {name: 'Rami Levy (Sha\'ar Binyamin)', info: 'Phone: 02-633-5506', coordX:31.865733, coordY: 35.260683}
 	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881566,coordY:35.246784}
 	,DryCleaners: {name:'Hagisga Dry Cleaners', info: 'Next to the supermarket in KY\nPhone: 052-365-6652\nHours: Not sure: 8:00 or 8:15 until 2:00 or 2:30pm', coordX:31.881052,coordY:35.245527}
-	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\n Phone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
+	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\nPhone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
+	,HardwareStore: {name:'Hardware Store', info: 'Not sure of Friday times.\nPhone: 058-566-5252, 02-970-9571', coordX:31.879735,coordY:35.244133}
 	};
 
 var storeHours = {
@@ -77,12 +78,10 @@ var storeHours = {
 		{day: 'Wednesday', open: 12, close: 22}
 		]
 	,WeberBakeStore: [
-		{day: 'Thursday', open: 15.5, close: 17}
-		
-		,{day: 'Tuesday', open: 20.5, close: 22}
+		{day: 'Tuesday', open: 20.5, close: 22}
 		,{day: 'Wednesday', open: 20.5, close: 22}
+		,{day: 'Thursday', open: 15.5, close: 17}
 		,{day: 'Thursday', open: 20.5, close: 22}
-
 		,{day: 'Friday', open: 10, close: 13}
 		]
 	,ChadPaamit: [
@@ -151,6 +150,14 @@ var storeHours = {
 		,{day: 'Wednesday', open: 8, close: 23}
 		,{day: 'Thursday', open: 8, close: 23}
 		,{day: 'Friday', open: 7.5, closeText: '3hr before Shabbos', close: shabbosStart().subtract(3,'hours').format('HHmm')}
+		]
+	,HardwareStore: [
+		{day: 'Sunday', open: 8.5, close: 19}
+		,{day: 'Monday', open: 8.5, close: 19}
+		,{day: 'Tuesday', open: 8.5, close: 19}
+		,{day: 'Wednesday', open: 8.5, close: 19}
+		,{day: 'Thursday', open: 8.5, close: 19}
+		,{day: 'Friday', open: 8.5, close: 12}
 		]
 };
 
