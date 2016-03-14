@@ -23,11 +23,13 @@ var storeData = {
 		info: 'Mekor Chaaim, cost: 30shekel\nOnly times for normal days listed, on winter clock. Weekday winter: 7:30pm-8:30pm. Summer: ? Motzei Shabbos ?\nUse other times: Odelia Badi 052-720-3360 or Devora Mizrachi 050-414-5489 for 20 shekel more.',
 		coordX:31.880218, coordY: 35.244833}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
+	,MakoletTZ: {name: 'Makolet TZ', info: 'Branch of Hachi K\'dai\n1 Kehilat Yaakov\nDeliveries cost 15shekel (free over 400 shekel)', coordX:31.880516, coordY: 35.239931}
 	,MakoletKY: {name: 'Makolet KY', info: 'Phone 1-700-550-550', coordX:31.881013, coordY: 35.245131}
 	,LeumiRamatEshkol: {name: 'Leumi Bank (Ramat Eshkol)', info: 'Ramat Eshkol', coordX:31.800846, coordY: 35.226847}
 	,RamiLevyBinyamin: {name: 'Rami Levy (Sha\'ar Binyamin)', info: 'Phone: 02-633-5506', coordX:31.865733, coordY: 35.260683}
 	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881566,coordY:35.246784}
 	,DryCleaners: {name:'Hagisga Dry Cleaners', info: 'Next to the supermarket in KY\nPhone: 052-365-6652\nHours: Not sure: 8:00 or 8:15 until 2:00 or 2:30pm', coordX:31.881052,coordY:35.245527}
+	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\n Phone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
 	};
 
 var storeHours = {
@@ -125,6 +127,14 @@ var storeHours = {
 		,{day: 'Thursday', open: 18.5, close: 20.5}
 		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart().add(40,'minutes').format('HHmm'),
 						close: shabbosEnd().add(10,'minutes').format('HHmm')	}
+		]
+	,MakoletTZ: [
+		{day: 'Sunday', open: 7, close: 21}
+		,{day: 'Monday', open: 7, close: 22}
+		,{day: 'Tuesday', open: 7, close: 22}
+		,{day: 'Wednesday', open: 7, close: 22}
+		,{day: 'Thursday', open: 7, close: 23}
+		,{day: 'Friday', open: 7, close: 13}
 		]
 	,MakoletKY: [
 		{day: 'Sunday', open: 7, close: 21}
