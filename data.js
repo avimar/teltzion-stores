@@ -25,6 +25,9 @@ var storeData = {
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	,MakoletKY: {name: 'Makolet KY', info: 'Phone 1-700-550-550', coordX:31.881013, coordY: 35.245131}
 	,LeumiRamatEshkol: {name: 'Leumi Bank (Ramat Eshkol)', info: 'Ramat Eshkol', coordX:31.800846, coordY: 35.226847}
+	,RamiLevyBinyamin: {name: 'Rami Levy (Sha\'ar Binyamin)', info: 'Phone: 02-633-5506', coordX:31.865733, coordY: 35.260683}
+	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881566,coordY:35.246784}
+	,DryCleaners: {name:'Hagisga Dry Cleaners', info: 'Next to the supermarket in KY\nPhone: 052-365-6652\nHours: Not sure: 8:00 or 8:15 until 2:00 or 2:30pm', coordX:31.881052,coordY:35.245527}
 	};
 
 var storeHours = {
@@ -131,14 +134,23 @@ var storeHours = {
 		,{day: 'Thursday', open: 7, close: 22}
 		,{day: 'Friday', open: 7, closeText: '2hr before Shabbos', close: shabbosStart().subtract(2,'hours').format('HHmm')}
 		]
+	,RamiLevyBinyamin: [
+		{day: 'Sunday', open: 8, close: 22}
+		,{day: 'Monday', open: 8, close: 22}
+		,{day: 'Tuesday', open: 8, close: 22}
+		,{day: 'Wednesday', open: 8, close: 23}
+		,{day: 'Thursday', open: 8, close: 23}
+		,{day: 'Friday', open: 7.5, closeText: '3hr before Shabbos', close: shabbosStart().subtract(3,'hours').format('HHmm')}
+		]
 };
 
 var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 var daysOfWeekHuman = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-var storeList = Object.keys(storeHours);//since object, make list of stores
+var storeList = Object.keys(storeData);//since object, make list of stores
 
 storeList.forEach(function(name){//iterate list of stores, and overwrite data to normalize it.
+	if(!storeHours[name]) return;//some stores don't have hours
 	storeHours[name] = storeHours[name].map(function(timeEntry){
 		timeEntry.day= daysOfWeek.indexOf(timeEntry.day.toLowerCase());//convert date to numbers in 0-6 format.
 		['open','close'].forEach(function(which){//dumb stuff to make it DRY

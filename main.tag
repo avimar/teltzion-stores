@@ -87,6 +87,7 @@ groups.add({id: 'Daytime', content: 'Daytime'});
 	});
 
 storeList.forEach(function(storeName){//loop store list keys to access each store
+	if(!storeHours[storeName]) return; //some stores don't have hours
 	groups.add({
 		id: storeName
 		,content: storeData[storeName] && storeData[storeName].name || storeName
@@ -167,7 +168,7 @@ this.on('mount', function(){
 			//Info window
 			var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
 			if(storeData[storeName].info) content+=storeData[storeName].info.nl2br()+"<br>";
-			storeHours[storeName].forEach(function(hoursList){//loop hours list
+			storeHours[storeName] && storeHours[storeName].forEach(function(hoursList){//loop hours list, some stores don't have hours
 				content+="<br><u>" + daysOfWeekHuman[hoursList.day]+":</u> ";
 				content+=hoursList.openHuman;
 				if(hoursList.openText)content+=" ("+hoursList.openText+") ";
