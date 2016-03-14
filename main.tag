@@ -71,8 +71,8 @@ var endOfWeek = function(){
 	}
 
 var dataForVis = [
- {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart.format('h:mma'), start: shabbosStart, type: 'point'}
- , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd.format('h:mma'), start: shabbosEnd, type: 'point'}
+ {group: 'Daytime', content: 'Shabbos Starts: candle lighting '+shabbosStart().format('h:mma'), start: shabbosStart(), type: 'point'}
+ , {group: 'Daytime', content: 'Shabbos Ends: '+shabbosEnd().format('h:mma'), start: shabbosEnd(), type: 'point'}
   ];
 var groups = new vis.DataSet();
 

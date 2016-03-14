@@ -1,8 +1,10 @@
 var locationX = 31.8772;
 var locationY = 35.2402;//18
 
-var shabbosStart = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
-var shabbosEnd = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
+var shabbosStartStore = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
+var shabbosEndStore = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
+function shabbosStart(){ return shabbosStartStore.clone(); }
+function shabbosEnd(){ return shabbosEndStore.clone(); }
 
 var storeData = {
 	PostOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
@@ -95,11 +97,11 @@ var storeHours = {
 		,{day: 'Tuesday', open: 12, close: 23}
 		,{day: 'Wednesday', open: 12, close: 23}
 		,{day: 'Thursday', open: 12, close: 23}
-		,{day: 'Friday', open: 11, closeText: '1½ hours before Shabbos', close: shabbosStart.clone().subtract(90,'minutes').format('HHmm')}
-		,{day: 'Saturday', openText: '40minutes after Tzeits', open: shabbosEnd.clone().add(40,'minutes').format('HHmm'), close: 23.5}
+		,{day: 'Friday', open: 11, closeText: '1½ hours before Shabbos', close: shabbosStart().subtract(90,'minutes').format('HHmm')}
+		,{day: 'Saturday', openText: '40minutes after Tzeits', open: shabbosEnd().add(40,'minutes').format('HHmm'), close: 23.5}
 		]
 	,KeiliMikvaTZ: [
-		{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart.clone().format('HHmm')}
+		{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart().format('HHmm')}
 		]
 	,MikvaTZ: [
 		{day: 'Sunday', open: 18.5, close: 21}
@@ -107,10 +109,10 @@ var storeHours = {
 		,{day: 'Tuesday', open: 18.5, close: 21}
 		,{day: 'Wednesday', open: 18.5, close: 21}
 		,{day: 'Thursday', open: 18.5, close: 21}
-		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart.clone().add(40,'minutes').format('HHmm'),
-						close: shabbosEnd.clone().add(10,'minutes').format('HHmm')	}
-		,{day: 'Saturday', openText: '1½ after Shabbos', open: shabbosEnd.clone().add(90,'minutes').format('HHmm'),
-						closeText: 'for 2 hours, get there first hour', close: shabbosEnd.clone().add(90+120,'minutes').format('HHmm') }
+		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart().add(40,'minutes').format('HHmm'),
+						close: shabbosEnd().add(10,'minutes').format('HHmm')	}
+		,{day: 'Saturday', openText: '1½ after Shabbos', open: shabbosEnd().add(90,'minutes').format('HHmm'),
+						closeText: 'for 2 hours, get there first hour', close: shabbosEnd().add(90+120,'minutes').format('HHmm') }
 		]
 	,MikvaKY: [
 		{day: 'Sunday', open: 18.5, close: 20.5}
@@ -118,8 +120,8 @@ var storeHours = {
 		,{day: 'Tuesday', open: 18.5, close: 20.5}
 		,{day: 'Wednesday', open: 18.5, close: 20.5}
 		,{day: 'Thursday', open: 18.5, close: 20.5}
-		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart.clone().add(40,'minutes').format('HHmm'),
-						close: shabbosEnd.clone().add(10,'minutes').format('HHmm')	}
+		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart().add(40,'minutes').format('HHmm'),
+						close: shabbosEnd().add(10,'minutes').format('HHmm')	}
 		]
 	,MakoletKY: [
 		{day: 'Sunday', open: 7, close: 21}
@@ -127,7 +129,7 @@ var storeHours = {
 		,{day: 'Tuesday', open: 7, close: 21}
 		,{day: 'Wednesday', open: 7, close: 22}
 		,{day: 'Thursday', open: 7, close: 22}
-		,{day: 'Friday', open: 7, closeText: '2 before Shabbos', close: shabbosStart.clone().subtract(2,'hours').format('HHmm')}
+		,{day: 'Friday', open: 7, closeText: '2hr before Shabbos', close: shabbosStart().subtract(2,'hours').format('HHmm')}
 		]
 };
 
