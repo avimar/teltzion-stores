@@ -7,8 +7,8 @@ function shabbosStart(){ return shabbosStartStore.clone(); }
 function shabbosEnd(){ return shabbosEndStore.clone(); }
 
 var storeData = {
-	PostOffice: {name: 'TZ Doar #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
-	,PostOfficeKY: {name: 'KY Doar', info: '', coordX:31.881202, coordY: 35.245059}
+	DoarTZ2: {name: 'Doar TZ #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
+	,DoarKY: {name: 'Doar KY', info: '', coordX:31.881202, coordY: 35.245059}
 	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Corner of Mekor Baruch and Ahavas Yisroel Parking Lot', coordX:31.879413, coordY: 35.239728}
 	,PharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
 	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
@@ -21,20 +21,20 @@ var storeData = {
 		coordX:31.881508, coordY: 35.239266}
 	,MikvaKY: {name: 'Women Mikva KY',
 		info: 'Mekor Chaaim, cost: 30shekel\nOnly times for normal days listed, on winter clock. Weekday winter: 7:30pm-8:30pm. Summer: ? Motzei Shabbos ?\nUse other times: Odelia Badi 052-720-3360 or Devora Mizrachi 050-414-5489 for 20 shekel more.',
-		coordX:31.880218, coordY: 35.244833}
+		coordX:31.880620, coordY: 35.244936}
 	,KikarNetanelSweetsStand: {name: 'Kikar Netanel Sweets Store', info: 'Next to Kikar Netanel', coordX:31.879945, coordY: 35.242878}
 	,MakoletTZ: {name: 'Makolet TZ', info: 'Branch of Hachi K\'dai\n1 Kehilat Yaakov\nDeliveries cost 15shekel (free over 400 shekel)', coordX:31.880516, coordY: 35.239931}
 	,MakoletKY: {name: 'Makolet KY', info: 'Phone 1-700-550-550', coordX:31.881013, coordY: 35.245131}
 	,LeumiRamatEshkol: {name: 'Leumi Bank (Ramat Eshkol)', info: 'Ramat Eshkol', coordX:31.800846, coordY: 35.226847}
 	,RamiLevyBinyamin: {name: 'Rami Levy (Sha\'ar Binyamin)', info: 'Phone: 02-633-5506', coordX:31.865733, coordY: 35.260683}
-	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881566,coordY:35.246784}
+	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881544,coordY:35.246871}
 	,DryCleaners: {name:'Hagisga Dry Cleaners', info: 'Next to the supermarket in KY\nPhone: 052-365-6652\nHours: Not sure: 8:00 or 8:15 until 2:00 or 2:30pm', coordX:31.881052,coordY:35.245527}
 	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\nPhone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
 	,HardwareStore: {name:'Hardware Store', info: 'Not sure of Friday times.\nPhone: 058-566-5252, 02-970-9571', coordX:31.879735,coordY:35.244133}
 	};
 
 var storeHours = {
-	PostOffice: [
+	DoarTZ2: [
 		{day: 'Sunday', open: '15:30', close: 17}
 		,{day: 'Monday', open: '8:30', close: 10}
 		,{day: 'Tuesday', open: '15:30', close: 17}
@@ -42,7 +42,7 @@ var storeHours = {
 		,{day: 'Thursday', open: '15:30', close: 17}
 		,{day: 'Friday', open: 11, close: 13}
 		]
-	,PostOfficeKY: [
+	,DoarKY: [
 		{day: 'Monday', open: 16, close: 17}
 		,{day: 'Thursday', open: 20, close: 21}
 		,{day: 'Friday', open: 9, close: 10}
