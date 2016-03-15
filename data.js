@@ -159,6 +159,13 @@ var storeHours = {
 		,{day: 'Thursday', open: 8.5, close: 19}
 		,{day: 'Friday', open: 8.5, close: 12}
 		]
+	,Seforim: [
+		{day: 'Sunday', open: 18, close: 21}
+		,{day: 'Monday', open: 18, close: 21}
+		,{day: 'Tuesday', open: 18, close: 21}
+		,{day: 'Wednesday', open: 18, close: 21}
+		,{day: 'Thursday', open: 18, close: 21}
+		]
 };
 
 var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
