@@ -17,7 +17,7 @@ var storeData = {
 	,WeberBakeStore: {name: 'Weber Bake Store', info: '5/1 Ahavat Yisroel (down 2 floors)\n997-9386 and 052-767-0471', coordX:31.879281, coordY: 35.240036}
 	,KeiliMikvaTZ: {name: 'Keili Mikva TZ', info: 'Kehilat Yaakov 9\nOther time: Azulay on Ahavat Emet 17/2, 02-997-1490 until 4pm, by appointment.', coordX:31.881570, coordY: 35.239375}
 	,MikvaTZ: {name: 'Women Mikva TZ',
-		info: 'Kehilat Yaakov 9\nOnly times for normal days listed, on winter clock. Weekday winter: 6:30pm-9pm. Summer: 7:30pm-9:30pm\nYom Tov night: Tzeits. Motzei Yom Tov follow shabbos schedule.\nDifferent hours on: Motzei 17 Tammuz, 9 Av, Chol Hamoed, Purim. \nFor later, call 997-3441',
+		info: 'Kehilat Yaakov 9\nOnly times for normal days listed. Weekday winter: 6:30pm-9pm. Summer: 7:30pm-9:30pm\nYom Tov night: Tzeits. Motzei Yom Tov follow shabbos schedule.\nDifferent hours on: Motzei 17 Tammuz, 9 Av, Chol Hamoed, Purim. \nFor later, call 997-3441',
 		coordX:31.881508, coordY: 35.239266}
 	,MikvaKY: {name: 'Women Mikva KY',
 		info: 'Mekor Chaaim, cost: 30shekel\nOnly times for normal days listed, on winter clock. Weekday winter: 7:30pm-8:30pm. Summer: ? Motzei Shabbos ?\nUse other times: Odelia Badi 052-720-3360 or Devora Mizrachi 050-414-5489 for 20 shekel more.',
@@ -108,12 +108,7 @@ var storeHours = {
 		{day: 'Friday', open: 6, closeText: 'until Shabbos', close: shabbosStart().format('HHmm')}
 		]
 	,MikvaTZ: [
-		{day: 'Sunday', open: 18.5, close: 21}
-		,{day: 'Monday', open: 18.5, close: 21}
-		,{day: 'Tuesday', open: 18.5, close: 21}
-		,{day: 'Wednesday', open: 18.5, close: 21}
-		,{day: 'Thursday', open: 18.5, close: 21}
-		,{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart().add(40,'minutes').format('HHmm'),
+		{day: 'Friday', openText: 'Only Shkia/Tzeitz', open: shabbosStart().add(40,'minutes').format('HHmm'),
 						close: shabbosEnd().add(10,'minutes').format('HHmm')	}
 		,{day: 'Saturday', openText: '1½ after Shabbos', open: shabbosEnd().add(90,'minutes').format('HHmm'),
 						closeText: 'for 2 hours, get there first hour', close: shabbosEnd().add(90+120,'minutes').format('HHmm') }
@@ -167,6 +162,22 @@ var storeHours = {
 		,{day: 'Thursday', open: 18, close: 21}
 		]
 };
+
+
+var DST = moment().isDST();
+if (DST) storeHours.MikvaTZ.push(
+		{day: 'Sunday', open: 19.5, close: 21.5}
+		,{day: 'Monday', open: 19.5, close: 21.5}
+		,{day: 'Tuesday', open: 19.5, close: 21.5}
+		,{day: 'Wednesday', open: 19.5, close: 21.5}
+		,{day: 'Thursday', open: 19.5, close: 21.5});
+else storeHours.MikvaTZ.push(
+		{day: 'Sunday', open: 18.5, close: 21}
+		,{day: 'Monday', open: 18.5, close: 21}
+		,{day: 'Tuesday', open: 18.5, close: 21}
+		,{day: 'Wednesday', open: 18.5, close: 21}
+		,{day: 'Thursday', open: 18.5, close: 21});
+
 
 var daysOfWeek = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 var daysOfWeekHuman = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
