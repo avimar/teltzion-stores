@@ -232,8 +232,9 @@ this.seeWeek = function (){
 	self.showDay = 7;
 	}
 
+this.todayIs=moment().format('e');
 this.isToday=function(day){
-	if(moment().format('e')==day) return ' (Today)';
+	if(self.todayIs==day) return ' (Today)';
 	else return '';
 	}
 
