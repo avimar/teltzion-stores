@@ -37,7 +37,7 @@
 <span each={name,i in daysOfWeekHuman}>
 	<input type="button" class="buttons {daySelected: (showDay==i)}" value={name+isToday(i)} onclick={seeDay.bind(null,i)}/>&nbsp;
 	</span>
--- <input type="button" class="buttons {daySelected: (showDay==i)}" value="Entire Week" onclick={seeWeek}/>
+-- <input type="button" class="buttons {daySelected: (showDay==7)}" value="Entire Week" onclick={seeWeek}/>
 &nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/13aANpmRzo99J8VUXuxiSxVvZKBuLx9WO2OqOnLqNuyI/" target="_blank">TZ Info</a>
 &nbsp;&nbsp;<a href="https://docs.google.com/document/d/1q8UVej2W6RziUNDtxFr7VYsTkaXoRp7thPVwL7H6tLI/" target="_blank">KY Info</a>
