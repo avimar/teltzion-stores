@@ -34,8 +34,8 @@
 <span id="mapToggleButton"><a onclick={mapToggle}>Toggle Map</a></span><!--https://developers.google.com/maps/documentation/javascript/examples/control-custom-->
 <span id="dayButtons" hide={onlyMap}>
 <br>
-<span each={name,i in daysOfWeek}>
-	<input type="button" class="buttons {daySelected: (showDay==i)}" data-day={i} value={name.capitalizeFirstLetter()+isToday(i)} onclick={seeDay}/>&nbsp;
+<span each={name,i in daysOfWeekHuman}>
+	<input type="button" class="buttons {daySelected: (showDay==i)}" value={name+isToday(i)} onclick={seeDay.bind(null,i)}/>&nbsp;
 	</span>
 -- <input type="button" class="buttons {daySelected: (showDay==i)}" value="Entire Week" onclick={seeWeek}/>
 &nbsp;&nbsp;<a href="https://github.com/avimar/teltzion-stores/issues" target="_blank">Report Issues</a>
@@ -214,8 +214,7 @@ this.on('mount', function(){
 		});
 	});
 
-this.seeDay = function (event){
-	var seeDay = event.target.getAttribute('data-day');
+this.seeDay = function (seeDay){
 	timeline.setWindow({
 		start: startOfWeek().day(seeDay)
 		,end:  startOfWeek().day(seeDay).endOf('day')
@@ -224,7 +223,7 @@ this.seeDay = function (event){
 	self.showDay = seeDay;
 	}
 
-this.seeWeek = function (event){
+this.seeWeek = function (){
 	timeline.setWindow({
 		start: startOfWeek()
 		,end:  endOfWeek()
