@@ -43,9 +43,9 @@ var storeHours = {
 		,{day: 'Friday', open: 11, close: 13}
 		]
 	,DoarKY: [
-		{day: 'Monday', open: 16, close: 17}
-		,{day: 'Thursday', open: 20, close: 21}
-		,{day: 'Friday', open: 9, close: 10}
+		{day: 'Monday', open: 19, close: 20}
+		,{day: 'Wednesday', open: 19, close: 20}
+		,{day: 'Friday', open: 8, close: 9}
 		]
 	,PharmacyMeuchedet: [
 		{day: 'Sunday', open: 8, close: 14}
