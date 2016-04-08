@@ -10,7 +10,7 @@ var storeData = {
 	DoarTZ2: {name: 'Doar TZ #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
 	,DoarKY: {name: 'Doar KY', info: '', coordX:31.881202, coordY: 35.245059}
 	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Corner of Mekor Baruch and Ahavas Yisroel Parking Lot', coordX:31.879413, coordY: 35.239728}
-	,PharmacyMeuchedet: {name: 'Meuchedet Pharmacy', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
+	,PharmacyMeuchedet: {name: 'Pharmacy, Meuchedet', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
 	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
 	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', coordX:31.878945, coordY: 35.239718}
 	,EggsMB1: {name: 'Egg Sale MB1', info: 'Mekor Baruch 1, up 1/2 flight', coordX:31.878198, coordY: 35.240136}
@@ -31,6 +31,7 @@ var storeData = {
 	,DryCleaners: {name:'Hagisga Dry Cleaners', info: 'Next to the supermarket in KY\nPhone: 052-365-6652\nHours: Not sure: 8:00 or 8:15 until 2:00 or 2:30pm', coordX:31.881052,coordY:35.245527}
 	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\nPhone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
 	,HardwareStore: {name:'Hardware Store', info: 'Not sure of Friday times.\nPhone: 058-566-5252, 02-970-9571', coordX:31.879735,coordY:35.244133}
+	,PharmacyShaarBinyamin: {name:'Pharmacy, Shaar Binyamin', info: 'Pharm 4 You - בית מרקחת אזורי שער בנימין\nPhone: 02-629-1029\nemail: pharm4foru@gmail.com, FB: pharm4u', coordX:31.865223,coordY:35.260526}
 	};
 
 var storeHours = {
@@ -160,6 +161,14 @@ var storeHours = {
 		,{day: 'Tuesday', open: 18, close: 21}
 		,{day: 'Wednesday', open: 18, close: 21}
 		,{day: 'Thursday', open: 18, close: 21}
+		]
+	,PharmacyShaarBinyamin: [
+		{day: 'Sunday', open: 8, close: 21}
+		,{day: 'Monday', open: 8, close: 21}
+		,{day: 'Tuesday', open: 8, close: 21}
+		,{day: 'Wednesday', open: 8, close: 21}
+		,{day: 'Thursday', open: 8, close: 21}
+		,{day: 'Friday', open: 8, close: 13}
 		]
 };
 
