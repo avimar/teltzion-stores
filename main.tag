@@ -212,6 +212,12 @@ this.on('mount', function(){
 		//if(storeData[group] && storeData[group].coordX) window.open('https://maps.google.com/?q='+storeData[group].coordX+','+storeData[group].coordY);
 		//else if(storeData[group] && storeData[group].map) window.open('https://maps.google.com/?q='+storeData[group].map);
 		});
+	timeline.on('contextmenu', function (properties) {
+		var group = properties.group;
+		//groups=groups.filter(function(groupList){return groupList.id!=group});
+		groups.remove(group);
+		properties.event.preventDefault();
+		});
 	});
 
 this.seeDay = function (seeDay){
