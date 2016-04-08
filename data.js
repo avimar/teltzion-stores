@@ -1,8 +1,8 @@
 var locationX = 31.8772;
 var locationY = 35.2402;//18
 
-var shabbosStartStore = moment(SunCalc.getTimes(moment().startOf('week').day(5), locationX, locationY).sunset).subtract(40,'minute');
-var shabbosEndStore = moment(SunCalc.getTimes(moment().startOf('week').day(6), locationX, locationY).dusk).add(10,'minute');
+var shabbosStartStore = moment(SunCalc.getTimes(moment().startOf('week').day(5).hour(14), locationX, locationY).sunset).subtract(40,'minute');
+var shabbosEndStore = moment(SunCalc.getTimes(moment().startOf('week').day(6).hour(14), locationX, locationY).dusk).add(10,'minute');
 function shabbosStart(){ return shabbosStartStore.clone(); }
 function shabbosEnd(){ return shabbosEndStore.clone(); }
 

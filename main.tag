@@ -89,7 +89,7 @@ var groups = new vis.DataSet();
 
 groups.add({id: '0daytime', content: 'Daytime'});
 [0,1,2,3,4,5,6].forEach(function(day){
-	var zmanim=SunCalc.getTimes(startOfWeek().day(day), locationX, locationY);
+	var zmanim=SunCalc.getTimes(startOfWeek().day(day).hour(14), locationX, locationY);
 	var daytime = {group: '0daytime', className: 'daytime'};
 	daytime.content = 'Daylight (neitz '+moment(zmanim.sunrise).format('h:mma') + ', earliest mincha: '+moment(zmanim.solarNoon).add(30,'minute').format('h:mma')+')';
 	daytime.start = zmanim.sunrise;
