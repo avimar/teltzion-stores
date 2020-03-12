@@ -9,7 +9,6 @@ function shabbosEnd(){ return shabbosEndStore.clone(); }
 var storeData = {
 	DoarTZ2: {name: 'Doar TZ #2', info: 'Corner of Mekor Baruch and Ahavas Yisroel', coordX:31.879313, coordY: 35.239771}
 	,DoarKY: {name: 'Doar KY', info: '', coordX:31.881202, coordY: 35.245059}
-	,RavFichel: {name: 'Rav Fichel Food Sale', info: 'Next to Merkaz Hatarbut', coordX:31.878511, coordY: 35.237738}
 	,PharmacyMeuchedet: {name: 'Pharmacy, Meuchedet', info: 'Above TZ Makolet', coordX:31.880311, coordY: 35.239828}
 	,BDStore:  {name: 'B&D Store', info: 'Ahavat Yisroel 18', coordX:31.878580, coordY: 35.239553}
 	,ChadPaamit: {name: 'Chad Paamit', info: 'Ahavat Yisroel 14', coordX:31.878945, coordY: 35.239718}
@@ -74,9 +73,6 @@ var storeHours = {
 		,{day: 'Wednesday', open: 8.5, close: 14.5}
 		
 		,{day: 'Friday', open: 8.5, close: 12.5}
-		]
-	,RavFichel: [
-		{day: 'Wednesday', open: 12, close: 22}
 		]
 	,WeberBakeStore: [
 		{day: 'Tuesday', open: 20.5, close: 22}
