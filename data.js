@@ -35,11 +35,10 @@ var storeData = {
 
 var storeHours = {
 	DoarTZ2: [
-		{day: 'Sunday', open: 8.5, close: 9.5}
-		,{day: 'Sunday', open: 17, close: 19}
-		,{day: 'Monday', open: '8:30', close: 10.5}
-		,{day: 'Tuesday', open: '15:30', close: 18}
-		,{day: 'Thursday', open: 19, close: 21}
+		{day: 'Sunday', open: 17, close: 19}
+		,{day: 'Monday', open: 8.5, close: 10.5}
+		,{day: 'Tuesday', open: 17, close: 19.5}
+		,{day: 'Thursday', open: 17.5, close: 20}
 		,{day: 'Friday', open: 10.5, close: 12.5}
 		]
 	,DoarKY: [
