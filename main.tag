@@ -63,6 +63,9 @@ String.prototype.capitalizeFirstLetter = function() {
 String.prototype.nl2br = function() {
 	return this.replace(/(\n)/g, '<br>');
 	}
+function makeURLsIntoLinks(text){
+	return text.replace(/(http\S*)/g,'<a href="$1" target=_"blank">$1</a>');
+	}
 
 function openInfoWindow(infoWindow,marker){
 	if(lastOpenInfoWindow) lastOpenInfoWindow.close();
@@ -180,7 +183,12 @@ this.on('mount', function(){
 
 			//Info window
 			var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
-			if(storeData[storeName].info) content+=storeData[storeName].info.nl2br()+"<br>";
+			if(storeData[storeName].info) {
+				var stroreInfo = storeData[storeName].info;
+				storeInfo = makeURLsIntoLinks(storeInfo);
+				storeInfo = storeInfo.nl2br();
+				content += storeInfo +"<br>";
+				}
 			storeHours[storeName] && storeHours[storeName].forEach(function(hoursList){//loop hours list, some stores don't have hours
 				content+="<br><u>" + daysOfWeekHuman[hoursList.day]+":</u> ";
 				content+=hoursList.openHuman;
