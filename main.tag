@@ -184,7 +184,7 @@ this.on('mount', function(){
 			//Info window
 			var content = "<b>"+(storeData[storeName].name || storeName)+"</b><br>";
 			if(storeData[storeName].info) {
-				var stroreInfo = storeData[storeName].info;
+				var storeInfo = storeData[storeName].info;
 				storeInfo = makeURLsIntoLinks(storeInfo);
 				storeInfo = storeInfo.nl2br();
 				content += storeInfo +"<br>";
