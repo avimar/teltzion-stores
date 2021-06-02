@@ -27,7 +27,7 @@ var storeData = {
 	,LeumiRamatEshkol: {name: 'Leumi Bank (Ramat Eshkol)', info: 'Ramat Eshkol', coordX:31.800846, coordY: 35.226847}
 	,RamiLevyBinyamin: {name: 'Rami Levy (Sha\'ar Binyamin)', info: 'Phone: 02-633-5506', coordX:31.865733, coordY: 35.260683}
 	,Shatnez: {name:'Shatnez Checking', info: '333 Etsei ha-Levanon Street\nPhone: 02-997-8122; 050-304-9782\n Hebrew/French Speakers', coordX:31.881544,coordY:35.246871}
-	,AchiYaakov: {name:'Gemach Achi Yaakov ', info: 'http://www.ayakov.co.il, 02-560-6868, Whatsapp: http://wa.me/9725092330095', coordX:31.881168584886513,coordY:35.245668453093856}
+	,AchiYaakov: {name:'Gemach Achi Yaakov ', info: 'http://www.ayakov.co.il 02-560-6868, Whatsapp: http://wa.me/9725092330095', coordX:31.881168584886513,coordY:35.245668453093856}
 	,Seforim: {name:'Seforim Store, Sifrei Fischer', info: '28 Ahavat Emet, in the Machsan on the right\nPhone: 054-842-0616, 02-970-9799\nHe can order and deliver seforim that he doesn\'t have.', coordX:31.878727,coordY:35.238713}
 	,HardwareStore: {name:'Hardware Store', info: 'Not sure of Friday times.\nPhone: 058-566-5252, 02-970-9571', coordX:31.879735,coordY:35.244133}
 	,PharmacyShaarBinyamin: {name:'Pharmacy, Shaar Binyamin', info: 'Pharm 4 You - בית מרקחת אזורי שער בנימין\nPhone: 02-629-1029\nemail: pharm4foru@gmail.com, FB: pharm4u', coordX:31.865223,coordY:35.260526}
