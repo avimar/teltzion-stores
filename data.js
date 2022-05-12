@@ -47,11 +47,13 @@ var storeHours = {
 		,{day: 'Friday', open: 8, close: 9}
 		]
 	,PharmacyMeuchedet: [
-		{day: 'Sunday', open: 8, close: 14}
-		,{day: 'Monday', open: 14, close: 19}
-		,{day: 'Tuesday', open: 8, close: 15}
-		,{day: 'Wednesday', open: 8, close: 13}
-		,{day: 'Thursday', open: 13, close: 19}
+		{day: 'Sunday', open: 8.5, close: 13}
+		,{day: 'Monday', open: 8.5, close: 12.5}
+		,{day: 'Monday', open: 15.5, close: 18.5}
+		,{day: 'Tuesday', open: 8.5, close: 13}
+		,{day: 'Wednesday', open: 8.5, close: 12.5}
+		,{day: 'Wednesday', open: 15.5, close: 18.5}
+		,{day: 'Thursday', open: 8.5, close: 13}
 		,{day: 'Friday', open: 8, close: 11}
 		]
 	,BDStore: [
